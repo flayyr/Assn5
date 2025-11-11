@@ -5,11 +5,6 @@ public class AudioPlayer : Block
 {
     AudioSource audioData;
 
-    void Start()
-    {
-
-    }
-
     void Update()
     {
         audioData = GetComponent<AudioSource>();
