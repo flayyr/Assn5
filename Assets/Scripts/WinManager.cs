@@ -29,11 +29,9 @@ public class WinManager : MonoBehaviour
         // play yippee and start running a timer, in 5 seconds go to the next scene
         // depending on the current scene, transition to the next one (or offer the new game)
         // and set the points back to 0, reset the timer
-        if (points == 3)
+        if ((currentSceneName == "DemoLevel" || currentSceneName == "Level2") && points == 3)
         {
-            Debug.Log("got 3 pts");
-
-            if(yippee)
+            if (yippee)
             {
                 // play yippee
                 audioSource.Play();
@@ -43,7 +41,8 @@ public class WinManager : MonoBehaviour
             // timer ticks down
             nextSceneTimer -= Time.deltaTime;
 
-            if (nextSceneTimer <= 0.0f) { // once the timer goes all the way down (5sec), change the scene
+            if (nextSceneTimer <= 0.0f)
+            { // once the timer goes all the way down (5sec), change the scene
                 // if the current scene is level 1 (demo adjusted), go to 2
                 if (currentSceneName == "DemoLevel")
                 {
@@ -53,10 +52,34 @@ public class WinManager : MonoBehaviour
                 }
 
                 // if the current scene is level 2, go to 3
-
-                // if the current scene is level 3, go to new game screen
+                if (currentSceneName == "Level2")
+                {
+                    points = 0;
+                    SceneManager.LoadScene("Level3");
+                    nextSceneTimer = 5.0f;
+                }
             }
 
+        }
+        
+        if(currentSceneName == "Level3" && points == 5)
+        {
+            if (yippee)
+            {
+                // play yippee
+                audioSource.Play();
+                yippee = false;
+            }
+
+            // timer ticks down
+            nextSceneTimer -= Time.deltaTime;
+
+            if (nextSceneTimer <= 0.0f)
+            {
+                points = 0;
+                SceneManager.LoadScene("RestartScreen");
+                nextSceneTimer = 5.0f;
+            }
         }
     }
 

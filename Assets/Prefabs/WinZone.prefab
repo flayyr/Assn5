@@ -216,6 +216,7 @@ MonoBehaviour:
   points: 0
   nextSceneTimer: 5
   currentSceneName: 
+  audioSource: {fileID: -1890057279681994015}
 --- !u!54 &8233593816616904461
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -254,7 +255,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 0}
+  m_Resource: {fileID: 8300000, guid: d396d70590d0560499e9d3ad641e906b, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
